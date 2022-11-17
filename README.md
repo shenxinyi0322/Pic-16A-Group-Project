@@ -2,7 +2,7 @@ Pic-16A-Group-Project
 
 Project name.
 
-Ellen Lee, Xinyi Shen, Daisy Watters, Benji 
+Ellen Lee, Xinyi Shen, Daisy Watters, Benji Carrere
 
 Short description of the project.
 

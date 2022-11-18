@@ -1,4 +1,4 @@
-SpotiFind
+SpotiFind 🕵️
 
 Ellen Lee, Xinyi Shen, Daisy Watters, Benji Carrere
 

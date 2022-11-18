@@ -1,8 +1,8 @@
-Pic-16A-Group-Project
+SpotiFind
 
 Ellen Lee, Xinyi Shen, Daisy Watters, Benji Carrere
 
-Short description of the project.
+For this project we plan to use the Spotify Million Playlist Dataset, which, per the challenge on the AIcrowd website, can be used to make music recommendations based on a playlist title or initial set of songs in a playlist.
 
 List of Python packages used and their versions (e.g. numpy 1.21.5). This is good practice for reproducible and responsible programming!
 

@@ -1,4 +1,4 @@
-SpotiFind 🕵️
+SpotiFind
 
 Ellen Lee, Xinyi Shen, Daisy Watters, Benji Carrere
 
@@ -33,6 +33,7 @@ Scope and limitations, including ethical implications, accessibility concerns, a
 
 References and acknowledgement.
 
-(If appropriate) background and source of the dataset.
+Background and source of the dataset:
+This dataset came from AIcrowd, and was created for the Spotify Million Playlist Dataset Challenge which was created so people could experiment with providing music recommendations. It contains a million playlists with a variety of songs, their artist names, album titles, etc.
 
 (If appropriate) links to any tutorials you used, and at least 3 specific things you implemented that differentiates your project from what’s already in the tutorial.

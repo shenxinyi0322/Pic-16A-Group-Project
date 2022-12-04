@@ -52,6 +52,79 @@ def scatterplot_matrix(cols, figsize, df):
     plt.tight_layout()
     plt.show()
 
+def strongest_correlation(cols, desired_coef, figsize, df):
+    """ Creates a matrix of scatterplots, each with a different possible pair of variables
+    on the x and y axis.
+    Args:
+        cols: a list or array of strings. Each string is the name of one of the data columns.
+        desired_coef: a float between 0 and 1. Dictates the minimum correlation coefficient between
+        variables for displayed plots. 
+        figsize: a tuple of two integers. Sets figure size to be element 0 by element 1
+        df: a datasest of various data types. Columns data is indexed and plotted from it.
+    Returns:
+        None
+    """
+    # sets n equal to the number of columns
+    n = len(cols)
+    # initializes empty list "strong_corr"
+    strong_corr = []
+
+    # loops through n times
+    for i in range(n):
+        # loops through n times
+        for j in range(n):
+            # creates variable corr_coeff that finds correlation coefficient of
+            # dataset column names cols[i] and cols[j]
+            corr_coef = np.corrcoef(x=(df[cols[i]]), y=(df[cols[j]]))
+            corr_coef = corr_coef[0, 1]
+            # if absolute value of the correlation coefficient is greater than or
+            # equal to inputted desired minimum coefficient AND
+            # the two indexed columns are not the same,
+            # the two indexed columns are appended to list "strong_corr" as a tuple
+            if (abs(corr_coef) >= desired_coef) & ((cols[i] >= cols[j])==False):
+                strong_corr.append((cols[i], cols[j]))
+
+    # sets s equal to length of list "strong_corr"
+    s = len(strong_corr)
+    # if length of strong_corr is less than one error is raised
+    if s < 1:
+        raise ValueError('There is no combination of variables that yields a correlation coefficient this high.')
+    # creates s by 1 new plots of size specified in parameters
+    fig, ax = plt.subplots(s, 1, figsize=figsize)
+    
+    # if length of strong_corr is 1
+    if s == 1:
+        # creates variable corr_coeff that finds correlation coefficient of
+        # the two variable in tuple
+        corr_coef = np.corrcoef(x=(df[strong_corr[0][0]]), y=(df[strong_corr[0][1]]))
+        corr_coef = corr_coef[0, 1]
+        # sets title and y axis label of subplot to be the 1st and 2nd tuple value respectively 
+        # sets x axis label to be a "caption" with the correlation coefficient of the variables
+        ax.set(title = strong_corr[0][0], ylabel = strong_corr[0][1], xlabel = r"$\rho$ = " 
+                                    + str(np.round(corr_coef, 2)))
+        # subplot is made into a scatter plot, with tuple value 0 as x axis and value 1 as y axis
+        ax.scatter(df[strong_corr[0][0]], df[strong_corr[0][1]]) 
+    # if length of strong_corr is greater than 1
+    else:
+        # loops through s times
+        for i in range(s):
+            # creates variable corr_coeff that finds correlation coefficient of
+            # the two variable in tuple i
+            corr_coef = np.corrcoef(x=(df[strong_corr[i][0]]), y=(df[strong_corr[i][1]]))
+            corr_coef = corr_coef[0, 1]
+            # sets title and y axis label of subplot row i to be the 1st and 2nd tuple value respectively 
+            # sets x axis label to be a "caption" with the correlation coefficient of the variables
+            ax[i].set(title = strong_corr[i][0], ylabel = strong_corr[i][1], xlabel = r"$\rho$ = " 
+                                        + str(np.round(corr_coef, 2)))
+            # subplot of row i is made into a scatter plot, 
+            # with list index i's tuple value 0 as x axis and value 1 as y axis
+            ax[i].scatter(df[strong_corr[i][0]], df[strong_corr[i][1]])
+
+    # adjusts subplot params so that the subplot(s) fits in to the figure area
+    # sublots are displayed
+    plt.tight_layout()
+    plt.show()
+    
 class data_graph:
     '''
     A class for data visualizations. Gives user ability to input data and pick the type of graph

@@ -161,6 +161,44 @@ def scatterplot_matrix_song_popularity(cols, figsize, df):
     plt.tight_layout()
     plt.show()
     
+def bestmodel(X,y):
+  """ Create a graph comparing linear regression model and polynomial regression model with actual data point
+    Args:
+        X: a series of data from one data columns 
+        y: another series of data from one data columns 
+    Returns:
+        None
+  """
+    X = np.array(X)
+    y = np.array(y)
+    X = X.reshape(-1, 1) #convert 1D array to 2D array to fit the function
+    y = y.reshape(-1, 1)
+
+    model1 = PolynomialRegression(1) # linear regression model
+    model1.fit(X,y)
+    #print(model1[-1].coef_, model1[-1].intercept_) 
+
+    model2 = PolynomialRegression(2) # polynomial regression model 
+    model2.fit(X, y)
+    #print(model2[-1].coef_, model2[-1].intercept_)
+
+    #plot both models with real data points
+    fig, ax = plt.subplots(1, figsize=(12,8))
+    ax.scatter(X, y, label = "data points")
+    xfit = np.linspace(0.01, 1, 1000).reshape(-1,1) 
+    ax.plot(xfit, model1.predict(xfit), 'k', label='prediction model - degree 1')
+    ax.plot(xfit, model2.predict(xfit), 'r', label='prediction model - degree 2')
+    ax.set(xlabel='X', ylabel='y')
+    plt.legend(fontsize=20)
+    plt.show()  
+
+    #determine the better model
+    if model1.score(X, y) > model2.score(X, y):
+        print("The linear regression model is the better perdiction model.")
+        print("The model function is f(x) = " + model1[-1].coef_[0][1] +"x + (" +model1[-1].intercept_[0] + ")")
+    if model1.score(X, y) < model2.score(X, y):
+        print("The polynomial regression model is the better perdiction model.")
+        print("The model function is f(x) = " + str(model2[-1].coef_[0][2]) +" x^2 + ("+ str(model2[-1].coef_[0][1]) +") x + (" +str(model2[-1].intercept_[0])+")")
 
     
 class data_graph:

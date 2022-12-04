@@ -60,12 +60,17 @@ class data_graph:
         # save the axis labels
         self.x_label = x_label
         self.y_label = y_label
-        # data for the x-axis
+        # save the data for the x and y axis
         self.x_data = x_data
-        # data for the y-axis
         self.y_data = y_data
     
     def scatter(self, data_color = ''):
+        ''' Creates a scatter plot using the instance variables for data and labels
+        Args: 
+            data_color: color of the plot points (empty string if not inputted)
+        Returns:
+            None
+        '''
         fig, ax = plt.subplots(1, 1)
         # if the user inputted a value for the data_color argument
         if data_color != '':
@@ -85,6 +90,12 @@ class data_graph:
         plt.show()
             
     def line(self, data_color = ''):
+        ''' Creates a line plot using the instance variables for data and labels
+        Args: 
+            data_color: color of the line (empty string if not inputted)
+        Returns:
+            None
+        '''
         # this method is the same as scatter but with plot instead
         fig, ax = plt.subplots(1, 1)
         if data_color != '':
@@ -99,6 +110,12 @@ class data_graph:
         plt.show()
             
     def boxplot(self):
+        ''' Creates boxplot using the instance variables for data and labels
+        Args: 
+            None
+        Returns:
+            None
+        '''
         # no option to input color for boxplot method
         fig, ax = plt.subplots(1, 1)
         # plot the data inputted as x_data, and make it horizontal because it looks better

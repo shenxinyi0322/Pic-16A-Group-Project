@@ -34,6 +34,7 @@ How to Run:
 
 
 Scope and limitations, including ethical implications, accessibility concerns, and ideas for potential extensions.
+1. When we were cleaning the data, song names were dropped from the dataset. Since song names can be related to trendy events, such as movies or social movements, this could have affected song popularity. However, such kinds of correlations between song names and song popularity can not be indicateds through our code. 
 
 References and acknowledgement.
 

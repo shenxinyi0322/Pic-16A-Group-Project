@@ -124,6 +124,84 @@ def strongest_correlation(cols, desired_coef, figsize, df):
     # sublots are displayed
     plt.tight_layout()
     plt.show()
+  
+def scatterplot_matrix_song_popularity(cols, figsize, df):
+    """ Creates a matrix of scatterplots, each with a different possible pair of variables
+    on the x and y axis.
+    Args:
+        cols: a list or array of strings. Each string is the name of one of the data columns.
+        figsize: a tuple of two integers. Sets figure size to be element 0 by element 1.
+        df: a datasest of various data types. Columns data is indexed and plotted from it.
+    Returns:
+        None
+    """
+    # sets n equal to the number of columns, then creates n by n new plots of size 
+    # specified in parameters
+    n = len(cols)
+    fig, ax = plt.subplots(n-1, 1, figsize=figsize)
+    
+
+    # loops through subplots by columns
+    for j in range(n-1):
+        # creates variable corr_coeff that finds correlation coefficient of
+        # dataset columns i and j
+        corr_coef = np.corrcoef(x=(df[cols[j+1]]), y=(df[cols[0]]))
+        corr_coef = corr_coef[0, 1]
+        # sets title and y axis label of subplot in row i and column j 
+        # to be i-th data column name and j-th column name respectively 
+        # sets x axis label to be a "caption" with the correlation 
+        # coefficient for each subplot
+        ax[j].set(title = cols[j+1], ylabel = cols[0], xlabel = r"$\rho$ = " 
+                            + str(np.round(corr_coef, 2)))
+        # if i does not equal j, body of code is run
+        ax[j].scatter(df[cols[j+1]], df[cols[0]])
+                
+    # adjusts subplot params so that the subplot(s) fits in to the figure area
+    # sublots are displayed
+    plt.tight_layout()
+    plt.show()
+    
+def bestmodel(X,y):
+     """ Create a graph comparing linear regression model and polynomial regression model with actual data point
+        Args:
+            X: a series of data from one data columns 
+            y: another series of data from one data columns 
+        Returns:
+            None
+      """
+      X = np.array(X)
+      y = np.array(y)
+      X = X.reshape(-1, 1) #convert 1D array to 2D array to fit the function
+      y = y.reshape(-1, 1)
+
+      model1 = PolynomialRegression(1) # linear regression model
+      model1.fit(X,y)
+      #print(model1[-1].coef_, model1[-1].intercept_) 
+
+      model2 = PolynomialRegression(2) # polynomial regression model 
+      model2.fit(X, y)
+      #print(model2[-1].coef_, model2[-1].intercept_)
+
+      #plot both models with real data points
+      fig, ax = plt.subplots(1, figsize=(12,8))
+      ax.scatter(X, y, label = "data points")
+      xfit = np.linspace(0.01, 1, 1000).reshape(-1,1) 
+      ax.plot(xfit, model1.predict(xfit), 'k', label='prediction model - degree 1')
+      ax.plot(xfit, model2.predict(xfit), 'r', label='prediction model - degree 2')
+      ax.set(xlabel='X', ylabel='y')
+      plt.legend(fontsize=20)
+      plt.show()  
+
+      #determine the better model
+      if model1.score(X, y) > model2.score(X, y):
+        print("The linear regression model is the better perdiction model.")
+        print("The model function is f(x) = " + model1[-1].coef_[0][1] 
+              +"x " +model1[-1].intercept_[0])
+      if model1.score(X, y) < model2.score(X, y):
+        print("The polynomial regression model is the better perdiction model.")
+        print("The model function is f(x) = " + str(model2[-1].coef_[0][1]) 
+              +" x^2 "+ str(model2[-1].coef_[0][2]) 
+              +" x " +str(model2[-1].intercept_[0]))
     
 class data_graph:
     '''

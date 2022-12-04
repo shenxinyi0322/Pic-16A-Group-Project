@@ -17,6 +17,7 @@ How to Run:
 1. Import data frame
 2. Drop "song_name" subset because this cannot be plotted as a string 
 3. Use the scatterplot_matrix function, dropping "song_name" as well as "song_popularity". This should result in a matrix of scatterplots that compare all the characteristics in the data frame with each other. The scatterplots can be interpretted by looking at the coeficcients listed at the bottoms of each graph as well as the visual pattern of the plots. If the absolute value of the correlation coefficient is between 0.3 and 0.7, this means there is a moderate correlation. Above 0.7 indicates a strong correlation and below 0.3 indicates no significant correlation.
+![3](https://drive.google.com/file/d/1yNVUSKbdisKt7kiS0hdarq2SFXRwTkI-/view?usp=share_link)
 
 
 4. Use the strongest_correlation function to filter out the characteristcs with no significant correlation. The expected outputs are 4 scatterplots comparing acoutsticness and energy, acoutsticness and loudness, energy and loudness, and instrumentalness and loudness. 

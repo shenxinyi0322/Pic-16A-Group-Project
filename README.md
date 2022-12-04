@@ -1,6 +1,6 @@
-SpotiFind 🕵️
+Find 🕵️
 
-Ellen Lee, Xinyi Shen, Daisy Watters, Benji Carrere
+Benji Carrere, Daisy Watters, Ellen Lee, Xinyi Shen 
 
 For this project we plan to use the Song Popularity Dataset which can be used to predict the popularity of songs based on factors like liveness, acoustics, energy, etc. Specifically, we would love to find potential correlations between song characteristics such as loudness and energy. 
 

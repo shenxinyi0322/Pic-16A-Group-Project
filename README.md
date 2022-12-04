@@ -22,6 +22,8 @@ How to Run:
 
 
 4. Use the strongest_correlation function to filter out the characteristcs with no significant correlation. The expected outputs are 4 scatterplots comparing acoutsticness and energy, acoutsticness and loudness, energy and loudness, and instrumentalness and loudness. 
+![step 4](https://user-images.githubusercontent.com/114321320/205518052-e91987f1-f7e8-4137-a9fe-b675dd68536b.png)
+
 
 
 5. Call the bestmodel function of each of the strongest_correlation results. The expected outputs are scatterplots with the actual data along with 1 linear regression model and second degree polynomial model. The function will also output the function of the better prediction model, printing out the equation.

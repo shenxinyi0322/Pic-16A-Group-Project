@@ -29,9 +29,9 @@ How to Run:
 
 
 5. Call the bestmodel function of each of the strongest_correlation results. The expected outputs are scatterplots with the actual data along with 1 linear regression model and second degree polynomial model. The function will also output the function of the better prediction model, printing out the equation.
-6. Use the scatterplot_matrix2 function to create scatterplots that compare all the characteristics in the data frame with song popularity. Based on data visualization and the coeficcients listed at the bottoms of each graph, no significant correlation is found between any of the song characteristics and song popularity.
+6. Use the scatterplot_matrix2 function to create scatterplots that compare all the characteristics in the data frame with song popularity. Based on the data visualizations and the correlation coeficcients listed at the bottoms of each graph, there is no significant correlation found between any of the song characteristics and song popularity.
 7. Use the strongest_correlation function to confirm the above observation. The expected outcome is a line indicating "There is no combination of variables that yields a correlation coefficient this high."
-  
+
 
 Scope and limitations, including ethical implications, accessibility concerns, and ideas for potential extensions.
 

@@ -2,6 +2,56 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
+def scatterplot_matrix(cols, figsize, df):
+    """ Creates a matrix of scatterplots, each with a different possible pair of variables
+    on the x and y axis.
+    Args:
+        cols: a list or array of strings. Each string is the name of one of the data columns.
+        figsize: a tuple of two integers. Sets figure size to be element 0 by element 1.
+        df: a datasest of various data types. Columns data is indexed and plotted from it.
+    Returns:
+        None
+    """
+    # sets n equal to the number of columns, then creates n by n new plots of size 
+    # specified in parameters
+    n = len(cols)
+    fig, ax = plt.subplots(n, n, figsize=figsize)
+    
+    # loops through subplots by rows
+    for i in range(n):
+        # loops through subplots by columns
+        for j in range(n):
+            # creates variable corr_coeff that finds correlation coefficient of
+            # dataset columns i and j
+            corr_coef = np.corrcoef(x=(df[cols[i]]), y=(df[cols[j]]))
+            corr_coef = corr_coef[0, 1]
+            # sets title and y axis label of subplot in row i and column j 
+            # to be i-th data column name and j-th column name respectively 
+            # sets x axis label to be a "caption" with the correlation 
+            # coefficient for each subplot
+            ax[i,j].set(title = cols[i], ylabel = cols[j], xlabel = r"$\rho$ = " 
+                                + str(np.round(corr_coef, 2)))
+            # if i does not equal j, body of code is run
+            if i != j:
+                # subplot in row i and column j is made into a scatter plot, with data
+                # column i of the dataset as x axis, and column j as y axis
+                ax[i,j].scatter(df[cols[i]], df[cols[j]])
+    
+    # subplot adjusted so it fits into figure area, and subplots below the 
+    # diagonal of blank graphs are deleted such that only subplots above are shown
+    # this is to avoid variable combination repeats
+    for i in range(n):
+        for j in range(n):
+            if i < j:
+                continue
+            else: 
+                plt.delaxes(ax[i, j])
+                
+    # adjusts subplot params so that the subplot(s) fits in to the figure area
+    # sublots are displayed
+    plt.tight_layout()
+    plt.show()
+
 class data_graph:
     '''
     A class for data visualizations. Gives user ability to input data and pick the type of graph

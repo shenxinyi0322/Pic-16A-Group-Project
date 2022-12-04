@@ -109,7 +109,7 @@ class data_graph:
             ax.set(xlabel = self.x_label, ylabel = self.y_label, title = self.y_label + " vs. " + self.x_label)
         plt.show()
             
-    def boxplot(self):
+    def box(self):
         ''' Creates boxplot using the instance variables for data and labels
         Args: 
             None

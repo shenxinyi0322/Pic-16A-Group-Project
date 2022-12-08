@@ -47,9 +47,11 @@ For this project we plan to use the Song Popularity Dataset which can be used to
 
 ## Scope and limitations, including ethical implications, accessibility concerns, and ideas for potential extensions.
 I. When we were cleaning the data, song names were dropped from the dataset. Since song names can be related to trendy events, such as movies or social movements, this could have affected song popularity. However, such kinds of correlations between song names and song popularity can not be indicateds through our code. 
+
 II. This dataset contains songs that are mainly in English with some that are in Spanish. However, when looking at the recent music scene, we can see that Asian music has gained traction as well, making its way into the Billboard Global Top 100. Something else that we should keep in mind is the fact that song popularity is very strongly influenced by the time of year. For example, in December, we can see a spike in holiday/Christmas related songs which might greatly skew the data. If we were able to obtain more current informmation in the dataset, we could generate a more acurate statistic like a correlation between popular types of songs in a certain timme period. This could help musicians analyze song trends based on the time of year. 
 
 ## References and acknowledgement.
 Project utilizes the Song Popularity Dataset. This dataset is referred from Kaggle, and was created by M. Yasser H. 
 [link](https://www.kaggle.com/datasets/yasserh/song-popularity-dataset/discussion?resource=download)
+
 License: CCO: Public Domain

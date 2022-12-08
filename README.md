@@ -45,6 +45,8 @@ For this project we plan to use the Song Popularity Dataset which can be used to
 
 9. Use the scatterplot_matrix_song_popularity function to create scatterplots that compare all the characteristics in the data frame with song popularity. Based on the data visualizations and the correlation coeficcients listed at the bottoms of each graph, there is no significant correlation found between any of the song characteristics and song popularity.
 
+There is also a [demo video](https://drive.google.com/file/d/1X9qUHVadLuOACG0EI0k7Db-p_AT6dpf2/view?usp=share_link) for your reference. 
+
 ## Scope and limitations, including ethical implications, accessibility concerns, and ideas for potential extensions.
 I. When we were cleaning the data, song names were dropped from the dataset. Since song names can be related to trendy events, such as movies or social movements, this could have affected song popularity. However, such kinds of correlations between song names and song popularity can not be indicateds through our code. 
 

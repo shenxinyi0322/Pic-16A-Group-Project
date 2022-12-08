@@ -1,5 +1,5 @@
-# Find 🕵️
-
+# P.O.P 🕵️ (Popularity Of Pieces)
+ 
 ## Names of group members: 
 Benji Carrere, Daisy Watters, Ellen Lee, Xinyi Shen 
 

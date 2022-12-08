@@ -41,7 +41,7 @@ For this project we plan to use the Song Popularity Dataset which can be used to
 ![step 7](https://user-images.githubusercontent.com/114321320/205518052-e91987f1-f7e8-4137-a9fe-b675dd68536b.png)
 
 8. Call the bestmodel function of each of the strongest_correlation results. The expected outputs are scatterplots with the actual data along with 1 linear regression model and second degree polynomial model. The function will also output the function of the better prediction model, printing out the equation.
-![bestmodel](https://user-images.githubusercontent.com/114321320/206332392-07332f79-bd50-49a4-9eaa-8cbec029d1d5.png = 250x250)
+![bestmodel](https://user-images.githubusercontent.com/114321320/206332392-07332f79-bd50-49a4-9eaa-8cbec029d1d5.png)
 
 9. Use the scatterplot_matrix_song_popularity function to create scatterplots that compare all the characteristics in the data frame with song popularity. Based on the data visualizations and the correlation coeficcients listed at the bottoms of each graph, there is no significant correlation found between any of the song characteristics and song popularity.
 

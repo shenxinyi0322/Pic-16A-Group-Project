@@ -1,6 +1,10 @@
 import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
+from sklearn import preprocessing
+from sklearn.pipeline import make_pipeline
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
 
 def scatterplot_matrix(cols, figsize, df):
     """ Creates a matrix of scatterplots, each with a different possible pair of variables
@@ -124,7 +128,7 @@ def strongest_correlation(cols, desired_coef, figsize, df):
     # sublots are displayed
     plt.tight_layout()
     plt.show()
-  
+
 def scatterplot_matrix_song_popularity(cols, figsize, df):
     """ Creates a matrix of scatterplots, each with a different possible pair of variables
     on the x and y axis.
@@ -161,25 +165,33 @@ def scatterplot_matrix_song_popularity(cols, figsize, df):
     plt.tight_layout()
     plt.show()
     
-def bestmodel(X,y):
-  """ Create a graph comparing linear regression model and polynomial regression model with actual data point
+def PolynomialRegression(degree=2, **kwargs):
+    return make_pipeline(preprocessing.PolynomialFeatures(degree),
+                         LinearRegression(**kwargs))
+    
+def bestmodel(X,y,Xlabel,ylabel):
+    """ Create a graph comparing linear regression model and polynomial regression model with actual data point
     Args:
         X: a series of data from one data columns 
         y: another series of data from one data columns 
+        Xlabel: a string input, serving as the x-axis label for the graph output
+        ylabel: a string input, serving as the x-axis label for the graph output
     Returns:
         None
-  """
+    """
     X = np.array(X)
     y = np.array(y)
     X = X.reshape(-1, 1) #convert 1D array to 2D array to fit the function
     y = y.reshape(-1, 1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3)
+    #test_size indicates the proportion of test data used for evaluating the best model; default value set to 0.3
 
     model1 = PolynomialRegression(1) # linear regression model
-    model1.fit(X,y)
+    model1.fit(X_train,y_train)
     #print(model1[-1].coef_, model1[-1].intercept_) 
 
     model2 = PolynomialRegression(2) # polynomial regression model 
-    model2.fit(X, y)
+    model2.fit(X_train, y_train)
     #print(model2[-1].coef_, model2[-1].intercept_)
 
     #plot both models with real data points
@@ -188,17 +200,18 @@ def bestmodel(X,y):
     xfit = np.linspace(0.01, 1, 1000).reshape(-1,1) 
     ax.plot(xfit, model1.predict(xfit), 'k', label='prediction model - degree 1')
     ax.plot(xfit, model2.predict(xfit), 'r', label='prediction model - degree 2')
-    ax.set(xlabel='X', ylabel='y')
+    ax.set(xlabel=Xlabel, ylabel=ylabel)
+    ax.set_title(Xlabel + " vs. "+ ylabel)
     plt.legend(fontsize=20)
     plt.show()  
 
     #determine the better model
-    if model1.score(X, y) > model2.score(X, y):
+    if model1.score(X_test, y_test) > model2.score(X_test, y_test):
         print("The linear regression model is the better perdiction model.")
         print("The model function is f(x) = " + model1[-1].coef_[0][1] +"x + (" +model1[-1].intercept_[0] + ")")
-    if model1.score(X, y) < model2.score(X, y):
+    if model1.score(X_test, y_test) < model2.score(X_test, y_test):
         print("The polynomial regression model is the better perdiction model.")
-        print("The model function is f(x) = " + str(model2[-1].coef_[0][2]) +" x^2 + ("+ str(model2[-1].coef_[0][1]) +") x + (" +str(model2[-1].intercept_[0])+")")
+        print("The model function is f(x) = " + str(model2[-1].coef_[0][2]) +" x^2 + ("+ str(model2[-1].coef_[0][1]) +") x + ("                 +str(model2[-1].intercept_[0])+")")
 
     
 class data_graph:
@@ -273,5 +286,3 @@ class data_graph:
         ax.set(xlabel = self.x_label, title = self.x_label)
         plt.show()
     
-
-
